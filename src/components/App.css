@@ -1,0 +1,44 @@
+.App {
+  max-width: 800px;
+  margin: 20px auto;
+  border: 1px dashed #555555;
+}
+
+ul {
+  list-style: none;
+}
+
+li:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.frame {
+  border: 1px solid gray;
+  margin: 5px;
+}
+
+.list {
+  flex-grow: 2;
+  background-color: #ffefef;
+}
+
+.editor {
+  flex-grow: 1;
+  background-color: #d9ecfc;
+  text-align: center;
+}
+
+pre {
+  background-color: #d3ffe4;
+}
+
+textarea {
+  width: 90%;
+  background-color: #ffffff;
+  resize: none;
+}
