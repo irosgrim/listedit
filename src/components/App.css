@@ -42,3 +42,7 @@ textarea {
   background-color: #ffffff;
   resize: none;
 }
+
+p {
+  text-align: left;
+}

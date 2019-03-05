@@ -28,7 +28,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<h3>The parent component</h3>
+				<h3>The App component</h3>
 				<p>Selected state value: {this.state.selected.note}</p>
 				<pre>
 					{`this.state = {

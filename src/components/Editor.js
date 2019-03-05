@@ -20,6 +20,12 @@ class Editor extends Component {
 		return (
 			<div className="editor frame">
 				<h2>Editor component</h2>
+				<p>
+					When I click on any of the list items on the left, <br /> i want this
+					component to get that item, as props or somehow. I want the textarea
+					to get that item as value and i <br /> want to be able to edit it and
+					save it.
+				</p>
 				<p>Parent state.selected note as props: {this.props.note}</p>
 				<p>this.state.id should be equal to the props: {this.state.id}</p>
 
