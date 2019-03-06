@@ -6,7 +6,7 @@ class Editor extends Component {
 		this.state = {
 			id: this.props.selected.id,
 			title: this.props.selected.title,
-			note: this.props.note
+			note: this.props.selected.note
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -14,7 +14,8 @@ class Editor extends Component {
 
 	handleChange(event) {
 		this.setState({ note: event.target.value });
-		this.props.handleedit(event.target.value);
+		//this.props.handleedit(event.target.value);
+		console.log(event.target.value);
 	}
 	render() {
 		return (
@@ -26,15 +27,17 @@ class Editor extends Component {
 					to get that item as value and i <br /> want to be able to edit it and
 					save it.
 				</p>
-				<p>Parent state.selected note as props: {this.props.note}</p>
-				<p>this.state.id should be equal to the props: {this.state.id}</p>
+				<p>Parent state.selected note as props: {this.props.selected.note}</p>
+				<p>
+					this.state.id should be equal to the props: {this.props.selected.id}
+				</p>
 
 				<textarea
 					name="editor"
 					id="editor"
 					cols="30"
 					rows="10"
-					value={this.state.note}
+					defaultValue={this.props.selected.note}
 					onChange={this.handleChange}
 				/>
 			</div>

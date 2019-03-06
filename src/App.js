@@ -20,7 +20,7 @@ class App extends Component {
 		};
 	}
 	handleEdit(e) {
-		this.setState({ value: e });
+		console.log(e.target.value);
 	}
 	handleClicked(e) {
 		this.setState({ selected: e });
