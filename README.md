@@ -4,9 +4,9 @@ Inspired by MacOsX notes
 
 ## Things to fix
 
-[x] handle delete errors
-[] handle lock note
-[] text format
-[] search feature
-[] local storage
-[] DB storage
+[*] handle delete errors
+[ ] handle lock note
+[ ] text format
+[ ] search feature
+[ ] local storage
+[ ] DB storage
