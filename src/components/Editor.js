@@ -4,40 +4,69 @@ class Editor extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			id: this.props.selected.id,
-			title: this.props.selected.title,
-			note: this.props.selected.note
+			note: [
+				{
+					id: 0,
+					title: '',
+					body: '',
+					date: '',
+					haspictures: false,
+					canedit: true
+				}
+			],
+			selected: 0,
+			caneditnote: true
 		};
 
 		this.handleChange = this.handleChange.bind(this);
 	}
-
-	handleChange(event) {
-		this.setState({ note: event.target.value });
-		//this.props.handleedit(event.target.value);
-		console.log(event.target.value);
+	componentDidUpdate(prevProps, prevState) {
+		if (prevProps.data !== this.props.data) {
+			this.setState({
+				note: this.props.data
+			});
+		}
 	}
+	componentDidMount() {
+		this.setState({ note: this.props.default });
+	}
+
+	newTitle = event => {
+		const newState = this.state.note;
+		newState[this.props.selected].body = event.target.value;
+
+		const substr =
+			newState[this.props.selected].body.length < 25 &&
+			newState[this.props.selected] !== -1
+				? newState[this.props.selected].body
+				: newState[this.props.selected].body.substring(0, 22);
+		return substr;
+	};
+	handleChange(event) {
+		const newState = this.state.note;
+		newState[this.props.selected].body = event.target.value;
+		this.setState({ note: newState });
+
+		console.log(this.newTitle(event));
+		this.props.handlechange(
+			event.target.value,
+			this.props.selected,
+			this.newTitle(event)
+		);
+	}
+
 	render() {
 		return (
-			<div className="editor frame">
-				<h2>Editor component</h2>
-				<p>
-					When I click on any of the list items on the left, <br /> i want this
-					component to get that item, as props or somehow. I want the textarea
-					to get that item as value and i <br /> want to be able to edit it and
-					save it.
-				</p>
-				<p>Parent state.selected note as props: {this.props.selected.note}</p>
-				<p>
-					this.state.id should be equal to the props: {this.props.selected.id}
-				</p>
-
+			<div id="right-panel">
+				<div id="drag" />
+				<h3 className="title">{this.state.note[this.props.selected].title}</h3>
 				<textarea
-					name="editor"
 					id="editor"
+					className="editor"
+					name="editor"
 					cols="30"
 					rows="10"
-					defaultValue={this.props.selected.note}
+					value={this.state.note[this.props.selected].body}
 					onChange={this.handleChange}
 				/>
 			</div>
