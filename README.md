@@ -4,9 +4,15 @@ Inspired by MacOsX notes
 
 ## Things to fix
 
-- [x] handle delete errors
-- [ ] handle lock note
+- [x] handle add new note
+- [x] handle delete note
+- [x] handle the delete errors
+- [x] handle lock note
+- [x] handle select note highlight
+- [x] handle panel resize
+- [ ] handle add pictures
 - [ ] text format
+- [ ] remove html entities from note title
 - [ ] search feature
 - [ ] local storage
 - [ ] DB storage

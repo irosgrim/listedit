@@ -10,7 +10,12 @@ function Toolbarbuttons(props) {
 				<li className="btn" onClick={props.addnote}>
 					<i className="fas fa-edit" />
 				</li>
-				<li className="btn">
+				<li
+					className="btn"
+					onClick={e => {
+						e.preventDefault();
+						document.execCommand('cut');
+					}}>
 					<i className="fas fa-font" />
 				</li>
 				<li className="btn">

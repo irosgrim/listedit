@@ -12,6 +12,7 @@ class Toolbar extends Component {
 					<Toolbarbuttons
 						addnote={this.props.addnote}
 						deletenote={this.props.deletenote}
+						textformat={this.props.textformat}
 					/>
 					<Search />
 				</div>

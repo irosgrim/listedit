@@ -15,27 +15,11 @@ class App extends Component {
 			note: [
 				{
 					id: uuid(),
-					title: 'First Entry',
-					body: 'First body text',
+					title: 'Default note',
+					body: '',
 					date: this.setNewDate(),
 					haspictures: false,
 					canedit: true
-				},
-				{
-					id: uuid(),
-					title: 'Second Entry',
-					body: 'Second body text',
-					date: this.setNewDate(),
-					haspictures: false,
-					canedit: true
-				},
-				{
-					id: uuid(),
-					title: 'Third Entry',
-					body: 'Third body text',
-					date: this.setNewDate(),
-					haspictures: false,
-					canedit: false
 				}
 			],
 			selected: 0
@@ -47,6 +31,7 @@ class App extends Component {
 		this.handleDeleteNote = this.handleDeleteNote.bind(this);
 		this.setNewDate = this.setNewDate.bind(this);
 		this.handleLockClicked = this.handleLockClicked.bind(this);
+		this.handleTextFormat = this.handleTextFormat.bind(this);
 	}
 	componentDidMount() {
 		Dragging();
@@ -64,7 +49,6 @@ class App extends Component {
 	//-------------- Handlers
 
 	handleLockClicked() {
-		console.log('lock clicked');
 		const copyOfNotes = this.state.note;
 		copyOfNotes[this.state.selected].canedit = !copyOfNotes[this.state.selected]
 			.canedit;
@@ -101,8 +85,12 @@ class App extends Component {
 				note: copyOfNotes,
 				selected: this.state.selected > 0 ? this.state.selected - 1 : 0
 			});
-			console.log(this.state.note.length);
 		}
+	}
+
+	handleTextFormat() {
+		console.log('text format');
+		document.execCommand('cut');
 	}
 	render() {
 		return (
@@ -115,6 +103,7 @@ class App extends Component {
 				<Toolbar
 					addnote={this.handleAddNote}
 					deletenote={this.handleDeleteNote}
+					textformat={this.handleTextFormat}
 				/>
 
 				<div id="left-panel">
@@ -129,8 +118,14 @@ class App extends Component {
 												this.setState({
 													selected: this.state.note.indexOf(note)
 												});
-											}}>
-											{note.title}
+											}}
+											className={
+												this.state.note[this.state.selected].id === note.id
+													? 'selected'
+													: ''
+											}>
+											<h2>{note.title}</h2>
+											<p>{note.date}</p>
 										</li>
 									);
 							  })}

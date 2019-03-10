@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ContentEditable from 'react-contenteditable';
 
 class Editor extends Component {
 	constructor(props) {
@@ -14,10 +15,9 @@ class Editor extends Component {
 					canedit: true
 				}
 			],
-			selected: 0,
-			caneditnote: true
+			selected: 0
 		};
-
+		this.contentEditable = React.createRef();
 		this.handleChange = this.handleChange.bind(this);
 	}
 	componentDidUpdate(prevProps, prevState) {
@@ -40,14 +40,12 @@ class Editor extends Component {
 			newState[this.props.selected] !== -1
 				? newState[this.props.selected].body
 				: newState[this.props.selected].body.substring(0, 22);
-		return substr;
+		return substr.length < 1 ? 'Empty note' : substr;
 	};
 	handleChange(event) {
 		const newState = this.state.note;
 		newState[this.props.selected].body = event.target.value;
 		this.setState({ note: newState });
-
-		console.log(this.newTitle(event));
 		this.props.handlechange(
 			event.target.value,
 			this.props.selected,
@@ -60,7 +58,7 @@ class Editor extends Component {
 			<div id="right-panel">
 				<div id="drag" />
 				<h3 className="title">{this.state.note[this.props.selected].title}</h3>
-				<textarea
+				{/* <div
 					id="editor"
 					className="editor"
 					name="editor"
@@ -68,6 +66,18 @@ class Editor extends Component {
 					rows="10"
 					value={this.state.note[this.props.selected].body}
 					onChange={this.handleChange}
+					contentEditable={this.props.caneditnote}
+				/> */}
+
+				<ContentEditable
+					id="editor"
+					className="editor"
+					name="editor"
+					innerRef={this.contentEditable}
+					html={this.state.note[this.props.selected].body}
+					disabled={!this.props.caneditnote}
+					onChange={this.handleChange}
+					tagName="div"
 				/>
 			</div>
 		);
