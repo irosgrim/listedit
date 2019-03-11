@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Editor from './components/Editor';
+import Notes from './components/Notes';
 import Locknote from './components/Locknote';
 import Toolbar from './components/Toolbar';
 import Dragging from './components/Functions';
@@ -26,6 +27,7 @@ class App extends Component {
 		};
 		//------------- Bindings
 		this.handleChange = this.handleChange.bind(this);
+		this.handleNoteClicked = this.handleNoteClicked.bind(this);
 		this.handleSelected = this.handleSelected.bind(this);
 		this.handleAddNote = this.handleAddNote.bind(this);
 		this.handleDeleteNote = this.handleDeleteNote.bind(this);
@@ -47,6 +49,11 @@ class App extends Component {
 	}
 
 	//-------------- Handlers
+	handleNoteClicked(e) {
+		this.setState({
+			selected: this.state.note.indexOf(e)
+		});
+	}
 
 	handleLockClicked() {
 		const copyOfNotes = this.state.note;
@@ -105,33 +112,11 @@ class App extends Component {
 					deletenote={this.handleDeleteNote}
 					textformat={this.handleTextFormat}
 				/>
-
-				<div id="left-panel">
-					<ul>
-						{this.state.selected < 0
-							? ''
-							: this.state.note.map(note => {
-									return (
-										<li
-											key={note.id}
-											onClick={() => {
-												this.setState({
-													selected: this.state.note.indexOf(note)
-												});
-											}}
-											className={
-												this.state.note[this.state.selected].id === note.id
-													? 'selected'
-													: ''
-											}>
-											<h2>{note.title}</h2>
-											<p>{note.date}</p>
-										</li>
-									);
-							  })}
-					</ul>
-				</div>
-
+				<Notes
+					selected={this.state.selected}
+					notes={this.state.note}
+					handleclick={this.handleNoteClicked}
+				/>
 				<Editor
 					default={this.state.note}
 					handlechange={this.handleChange}
