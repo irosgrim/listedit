@@ -172,6 +172,38 @@ body {
   color: #95EEFF;
 }
 
+.text-format {
+  position: relative;
+  left: 235px;
+  z-index: 42;
+  width: 120px;
+  border-radius: 0 0 3px 3px;
+  background: rgba(0, 141, 160, 0.8);
+}
+
+.text-format ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  color: #004C56;
+  font-size: 18px;
+}
+
+.text-format ul li {
+  text-align: center;
+  height: 30px;
+  width: 30px;
+  padding-top: 2px;
+}
+
+.text-format ul li:hover {
+  background-color: rgba(0, 141, 160, 0.8);
+  border-radius: 3px;
+}
+
 .menu-controls ul {
   list-style-type: none;
   color: #004C56;

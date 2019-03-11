@@ -3,6 +3,7 @@ import Editor from './components/Editor';
 import Notes from './components/Notes';
 import Locknote from './components/Locknote';
 import Toolbar from './components/Toolbar';
+import Textformat from './components/Textformat';
 import Dragging from './components/Functions';
 import uuid from 'uuid/v4';
 
@@ -23,7 +24,9 @@ class App extends Component {
 					canedit: true
 				}
 			],
-			selected: 0
+			selected: 0,
+			buttonactive: 0,
+			textformatvisible: false
 		};
 		//------------- Bindings
 		this.handleChange = this.handleChange.bind(this);
@@ -99,6 +102,15 @@ class App extends Component {
 		console.log('text format');
 		document.execCommand('cut');
 	}
+	active = () => {
+		if (this.state.buttonactive === 2) {
+			this.setState({ buttonactive: 0 });
+			return 0;
+		} else {
+			this.setState({ buttonactive: 2 });
+			return 2;
+		}
+	};
 	render() {
 		return (
 			<div className="App" id="container">
@@ -110,8 +122,14 @@ class App extends Component {
 				<Toolbar
 					addnote={this.handleAddNote}
 					deletenote={this.handleDeleteNote}
-					textformat={this.handleTextFormat}
+					textformat={() => {
+						this.setState({
+							textformatvisible: !this.state.textformatvisible
+						});
+					}}
+					textformatactive={this.state.textformatvisible}
 				/>
+				<Textformat visible={this.state.textformatvisible} />
 				<Notes
 					selected={this.state.selected}
 					notes={this.state.note}

@@ -1,6 +1,11 @@
 import React from 'react';
 
 function Toolbarbuttons(props) {
+	const active = () => {
+		return props.textformatactive === true
+			? { backgroundColor: '#5ea5a8' }
+			: null;
+	};
 	return (
 		<div className="menu-controls">
 			<ul>
@@ -10,12 +15,7 @@ function Toolbarbuttons(props) {
 				<li className="btn" onClick={props.addnote}>
 					<i className="fas fa-edit" />
 				</li>
-				<li
-					className="btn"
-					onClick={e => {
-						e.preventDefault();
-						document.execCommand('cut');
-					}}>
+				<li className="btn" onClick={props.textformat} style={active()}>
 					<i className="fas fa-font" />
 				</li>
 				<li className="btn">

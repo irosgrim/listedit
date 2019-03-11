@@ -13,6 +13,7 @@ class Toolbar extends Component {
 						addnote={this.props.addnote}
 						deletenote={this.props.deletenote}
 						textformat={this.props.textformat}
+						textformatactive={this.props.textformatactive}
 					/>
 					<Search />
 				</div>
