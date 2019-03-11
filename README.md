@@ -2,6 +2,8 @@
 
 Inspired by MacOsX notes
 
+![alt The note taker](notes.png)
+
 ## Things to fix
 
 - [x] handle add new note
