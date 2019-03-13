@@ -15,7 +15,10 @@ class Toolbar extends Component {
 						textformat={this.props.textformat}
 						textformatactive={this.props.textformatactive}
 					/>
-					<Search />
+					<Search
+						handlesearch={this.props.handlesearch}
+						handleclear={this.props.handleclear}
+					/>
 				</div>
 			</div>
 		);

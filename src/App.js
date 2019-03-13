@@ -27,7 +27,8 @@ class App extends Component {
 			],
 			selected: 0,
 			buttonactive: 0,
-			textformatvisible: false
+			textformatvisible: false,
+			searchresults: []
 		};
 		//------------- Bindings
 		this.handleChange = this.handleChange.bind(this);
@@ -39,6 +40,8 @@ class App extends Component {
 		this.handleLockClicked = this.handleLockClicked.bind(this);
 		this.handleTextFormat = this.handleTextFormat.bind(this);
 		this.handleRenameNote = this.handleRenameNote.bind(this);
+		this.handleSearch = this.handleSearch.bind(this);
+		this.handleClearSearchResults = this.handleClearSearchResults.bind(this);
 	}
 	componentDidMount() {
 		Dragging();
@@ -88,7 +91,8 @@ class App extends Component {
 			.replace(/<p>/g, '')
 			.replace(/<\/p>/g, '')
 			.replace(/</g, '')
-			.replace(/>/g, '');
+			.replace(/>/g, '')
+			.replace(/&nbsp/g, '');
 		copyOfNotes[index].body = event;
 		this.setState({ note: copyOfNotes });
 	}
@@ -142,6 +146,20 @@ class App extends Component {
 			return 2;
 		}
 	};
+
+	handleSearch(e) {
+		const found = this.state.note.filter(note => {
+			return note.body.includes(e.target.value);
+		});
+
+		this.setState({ searchresults: found });
+		if (e.target.value === '') {
+			this.setState({ searchresults: [] });
+		}
+	}
+	handleClearSearchResults(e) {
+		this.setState({ searchresults: [] });
+	}
 	render() {
 		return (
 			<div className="App" id="container">
@@ -160,6 +178,9 @@ class App extends Component {
 						return false;
 					}}
 					textformatactive={this.state.textformatvisible}
+					handlesearch={this.handleSearch}
+					handleclear={this.handleClearSearchResults}
+					searchresults={this.state.searchresults}
 				/>
 				<Textformat visible={this.state.textformatvisible} />
 				<Notes
@@ -167,6 +188,7 @@ class App extends Component {
 					notes={this.state.note}
 					handleclick={this.handleNoteClicked}
 					handlerenamenote={this.handleRenameNote}
+					searchresults={this.state.searchresults}
 				/>
 				<Editor
 					default={this.state.note}

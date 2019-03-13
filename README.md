@@ -21,6 +21,6 @@ Inspired by MacOsX notes
 - [x] unordered list
 - [x] rename on double click and enter
 - [x] remove html entities from note title
-- [ ] search feature
+- [x] search feature
 - [ ] local storage
 - [ ] DB storage

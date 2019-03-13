@@ -101,6 +101,11 @@ b {
   background-color: #047f8f;
 }
 
+.found {
+  color: #ee848e;
+  font-weight: 800;
+}
+
 #right-panel {
   position: absolute;
   overflow: scroll;
