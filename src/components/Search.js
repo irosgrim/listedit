@@ -22,12 +22,16 @@ class Search extends Component {
 	render() {
 		return (
 			<div className="menu-search">
-				<form>
+				<form
+					onSubmit={e => {
+						e.preventDefault();
+					}}>
 					<input
 						id="search_input"
 						type="text"
 						className="search-input"
 						onChange={this.handleSearch}
+						title="search note"
 					/>
 					<i
 						className={
@@ -36,6 +40,7 @@ class Search extends Component {
 								: 'fas fa-search search-btn'
 						}
 						onClick={this.handleClear}
+						title="search or clear"
 					/>
 				</form>
 			</div>
