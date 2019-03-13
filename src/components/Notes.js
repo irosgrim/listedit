@@ -17,7 +17,18 @@ class Notes extends Component {
 												? 'selected'
 												: ''
 										}>
-										<h2>{note.title}</h2>
+										<h2
+											onDoubleClick={e => {
+												e.target.setAttribute('contenteditable', true);
+											}}
+											onKeyPress={e => {
+												if (e.key === 'Enter') {
+													e.target.setAttribute('contenteditable', false);
+													this.props.handlerenamenote(e.target.innerText);
+												}
+											}}>
+											{note.title}
+										</h2>
 										<p>{note.date}</p>
 									</li>
 								);

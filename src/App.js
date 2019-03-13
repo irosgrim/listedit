@@ -20,6 +20,7 @@ class App extends Component {
 					title: 'Default note',
 					body: '',
 					date: this.setNewDate(),
+					hastitle: false,
 					haspictures: false,
 					canedit: true
 				}
@@ -37,6 +38,7 @@ class App extends Component {
 		this.setNewDate = this.setNewDate.bind(this);
 		this.handleLockClicked = this.handleLockClicked.bind(this);
 		this.handleTextFormat = this.handleTextFormat.bind(this);
+		this.handleRenameNote = this.handleRenameNote.bind(this);
 	}
 	componentDidMount() {
 		Dragging();
@@ -81,6 +83,7 @@ class App extends Component {
 			title: 'New note',
 			body: '',
 			date: this.setNewDate(),
+			hastitle: false,
 			haspictures: false,
 			canedit: true
 		};
@@ -102,6 +105,14 @@ class App extends Component {
 		console.log('text format');
 		document.execCommand('cut');
 	}
+
+	handleRenameNote(e) {
+		const copyOfNotes = this.state.note;
+		copyOfNotes[this.state.selected].title = e;
+		copyOfNotes[this.state.selected].hastitle = true;
+		this.setState({ note: copyOfNotes });
+	}
+
 	active = () => {
 		if (this.state.buttonactive === 2) {
 			this.setState({ buttonactive: 0 });
@@ -134,6 +145,7 @@ class App extends Component {
 					selected={this.state.selected}
 					notes={this.state.note}
 					handleclick={this.handleNoteClicked}
+					handlerenamenote={this.handleRenameNote}
 				/>
 				<Editor
 					default={this.state.note}

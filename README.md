@@ -13,7 +13,13 @@ Inspired by MacOsX notes
 - [x] handle select note highlight
 - [x] handle panel resize
 - [ ] handle add pictures
-- [ ] text format
+- [x] text format
+  - [x] bold
+  - [x] italic
+  - [x] underline
+  - [x] strike-through
+- [x] unordered list
+- [x] rename on double click and enter
 - [ ] remove html entities from note title
 - [ ] search feature
 - [ ] local storage

@@ -11,6 +11,7 @@ class Editor extends Component {
 					title: '',
 					body: '',
 					date: '',
+					hastitle: false,
 					haspictures: false,
 					canedit: true
 				}
@@ -40,7 +41,12 @@ class Editor extends Component {
 			newState[this.props.selected] !== -1
 				? newState[this.props.selected].body
 				: newState[this.props.selected].body.substring(0, 22);
-		return substr.length < 1 ? 'Empty note' : substr;
+
+		if (newState[this.props.selected].hastitle === false) {
+			return substr.length < 1 ? 'Empty note' : substr;
+		} else {
+			return newState[this.props.selected].title;
+		}
 	};
 	handleChange(event) {
 		const newState = this.state.note;

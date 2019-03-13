@@ -37,6 +37,11 @@ body {
   font-size: 16px;
 }
 
+b {
+  font-weight: 1000;
+  color: red;
+}
+
 /********** main *********/
 
 #container {
@@ -70,10 +75,23 @@ body {
 
 #left-panel li {
   border-bottom: 1px solid #008da0;
-  padding: 10px 5px 0 5px;
+  padding: 0 5px 0 5px;
   min-height: 50px;
   cursor: pointer;
   transition: 0.5s;
+}
+
+#left-panel li h2 {
+  height: 30px;
+  padding-top: 10px;
+  transition: 0.5s;
+}
+
+#left-panel li h2:focus {
+  padding-left: 10px;
+  font-style: italic;
+  border-left: 3px solid #ee848e;
+  outline: none;
 }
 
 #left-panel li:hover {
@@ -126,6 +144,11 @@ body {
   line-height: 1.99rem;
   font-size: 1rem;
   border-radius: 0 0 5px 0;
+}
+
+.editor ul {
+  list-style-type: circle;
+  margin-left: 30px;
 }
 
 .editor:focus {

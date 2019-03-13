@@ -1,5 +1,9 @@
 import React from 'react';
 
+function insertUnorderedList() {
+	document.execCommand('insertUnorderedList');
+}
+
 function Toolbarbuttons(props) {
 	const active = () => {
 		return props.textformatactive === true
@@ -21,7 +25,11 @@ function Toolbarbuttons(props) {
 				<li className="btn">
 					<i className="fas fa-images" />
 				</li>
-				<li className="btn">
+				<li
+					className="btn"
+					onMouseDown={() => {
+						insertUnorderedList();
+					}}>
 					<i className="fas fa-list-ul" />
 				</li>
 			</ul>
