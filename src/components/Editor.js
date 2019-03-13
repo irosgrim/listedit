@@ -40,7 +40,7 @@ class Editor extends Component {
 			newState[this.props.selected].body.length < 25 &&
 			newState[this.props.selected] !== -1
 				? newState[this.props.selected].body
-				: newState[this.props.selected].body.substring(0, 22).toString();
+				: newState[this.props.selected].body.substring(0, 16).toString();
 
 		if (newState[this.props.selected].hastitle === false) {
 			return substr.length < 1 ? 'Empty note' : substr;
