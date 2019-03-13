@@ -3,7 +3,11 @@ import React, { Component } from 'react';
 class Locknote extends Component {
 	render() {
 		return (
-			<div className="lock-btn" id="lock-btn" onClick={this.props.editorlock}>
+			<div
+				className="lock-btn"
+				id="lock-btn"
+				onClick={this.props.editorlock}
+				title="lock note">
 				<i
 					className={
 						this.props.caneditnote ? 'fas fa-unlock' : 'fas fa-lock locked'

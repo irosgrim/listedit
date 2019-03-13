@@ -21,25 +21,29 @@ function Textformat(props) {
 				<li
 					onMouseDown={() => {
 						bold();
-					}}>
+					}}
+					title="bold">
 					<i className="fas fa-bold text-format_icon" />
 				</li>
 				<li
 					onMouseDown={() => {
 						italic();
-					}}>
+					}}
+					title="italic">
 					<i className="fas fa-italic text-format_icon" />
 				</li>
 				<li
 					onMouseDown={() => {
 						underline();
-					}}>
+					}}
+					title="underline">
 					<i className="fas fa-underline text-format_icon" />
 				</li>
 				<li
 					onMouseDown={() => {
 						strikeThrough();
-					}}>
+					}}
+					title="strike through">
 					<i className="fas fa-strikethrough text-format_icon" />
 				</li>
 			</ul>

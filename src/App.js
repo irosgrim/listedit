@@ -86,7 +86,9 @@ class App extends Component {
 			.replace(/<strike>/g, '')
 			.replace(/<\/strike>/g, '')
 			.replace(/<p>/g, '')
-			.replace(/<\/p>/g, '');
+			.replace(/<\/p>/g, '')
+			.replace(/</g, '')
+			.replace(/>/g, '');
 		copyOfNotes[index].body = event;
 		this.setState({ note: copyOfNotes });
 	}
@@ -155,6 +157,7 @@ class App extends Component {
 						this.setState({
 							textformatvisible: !this.state.textformatvisible
 						});
+						return false;
 					}}
 					textformatactive={this.state.textformatvisible}
 				/>

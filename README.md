@@ -20,7 +20,7 @@ Inspired by MacOsX notes
   - [x] strike-through
 - [x] unordered list
 - [x] rename on double click and enter
-- [ ] remove html entities from note title
+- [x] remove html entities from note title
 - [ ] search feature
 - [ ] local storage
 - [ ] DB storage
