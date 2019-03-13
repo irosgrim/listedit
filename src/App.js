@@ -67,8 +67,26 @@ class App extends Component {
 		this.setState({ notes: copyOfNotes });
 	}
 	handleChange(event, index, title) {
+		const regex = /&(nbsp|amp|quot|lt|gt);/gi;
 		const copyOfNotes = this.state.note;
-		copyOfNotes[index].title = title;
+		copyOfNotes[index].title = title
+			.replace(regex, '')
+			.replace(/<ul>/g, '')
+			.replace(/<\/ul>/g, '')
+			.replace(/<li>/g, '')
+			.replace(/<\/li>/g, '')
+			.replace(/<br>/g, '')
+			.replace(/<\/br>/g, '')
+			.replace(/<b>/g, '')
+			.replace(/<\/b>/g, '')
+			.replace(/<i>/g, '')
+			.replace(/<\/i>/g, '')
+			.replace(/<u>/g, '')
+			.replace(/<\/u>/g, '')
+			.replace(/<strike>/g, '')
+			.replace(/<\/strike>/g, '')
+			.replace(/<p>/g, '')
+			.replace(/<\/p>/g, '');
 		copyOfNotes[index].body = event;
 		this.setState({ note: copyOfNotes });
 	}

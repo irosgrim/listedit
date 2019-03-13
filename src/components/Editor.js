@@ -84,6 +84,11 @@ class Editor extends Component {
 					disabled={!this.props.caneditnote}
 					onChange={this.handleChange}
 					tagName="div"
+					onKeyDown={e => {
+						if (e.key === 'Enter') {
+							document.execCommand('defaultParagraphSeparator', false, 'p');
+						}
+					}}
 				/>
 			</div>
 		);
